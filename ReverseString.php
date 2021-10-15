@@ -35,9 +35,14 @@ class ReverseString
     {
         $regx = '/[A-ZА-ЯЁ]/u';
         $word = mb_str_split($word);
-        $count = count($word)-1;
+        while (!preg_match('/[a-zA-Zа-яёА-ЯЁ\\\-]/u', $word[$count]))
+        {
+            $count--;
+        }
+
         for ($i = 0; $i <= $count; $i++){
-            if (!preg_match('/[a-zA-Zа-яёА-ЯЁ\\\-]/u', $word[$count])){
+            //Завсит от условий ТЗ. как надо обрабатывать слова с цифрами и символоми в середине? например 4pda.ru
+            if (!preg_match('/[a-zA-Zа-яёА-ЯЁ\\\-{.}]/u', $word[$count])){
                 $count--;
                 $i--;
                 continue;
