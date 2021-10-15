@@ -37,7 +37,7 @@ class ReverseString
         $word = mb_str_split($word);
         $count = count($word)-1;
         for ($i = 0; $i <= $count; $i++){
-            if (!preg_match('/[a-zA-Zа-яёА-ЯЁ]/u', $word[$count])){
+            if (!preg_match('/[a-zA-Zа-яёА-ЯЁ\\\-]/u', $word[$count])){
                 $count--;
                 $i--;
                 continue;
