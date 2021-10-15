@@ -12,14 +12,18 @@ class ReverseStringTest extends TestCase
     public function testGetReverseWordsString()
     {
         $string = new ReverseString();
-        $string->reverseString = 'Привет мир!';
-        $this->assertSame('Тевирп рим!', $string->getReverseWordsString());
+        $string->reverseString = 'Привет не мир!';
+        $this->assertSame('Тевирп ен рим!', $string->getReverseWordsString());
 
         $string->reverseString = 'ПриВет мир!!! HEllo World!';
         $this->assertSame('ТевИрп рим!!! OLleh Dlrow!', $string->getReverseWordsString());
-        
+
         $string->reverseString = 'При-вет! - ДавНо не ви-деЛись.';
         $this->assertSame('Тев-ирп! - ОнвАд ен ьсилеД-ив.', $string->getReverseWordsString());
+
+
+        $string->reverseString = 'вконтакте.ру!!';
+        $this->assertSame('ур.еткатнокв!!', $string->getReverseWordsString());
     }
 
     public function testFailGetReverseWordsString()
@@ -41,6 +45,10 @@ class ReverseStringTest extends TestCase
 
         $result = $reverseWordMethod->invoke($string, 'WhatIts2More');
         $this->assertSame('EromSti2Tahw', $result);
+
+        $result = $reverseWordMethod->invoke($string, '4pda.ru');
+        $this->assertSame('ur.adp4', $result);
+
     }
 
     public function testPrivateGetReverseCharOnArray()
