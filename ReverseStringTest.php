@@ -17,6 +17,9 @@ class ReverseStringTest extends TestCase
 
         $string->reverseString = 'ПриВет мир!!! HEllo World!';
         $this->assertSame('ТевИрп рим!!! OLleh Dlrow!', $string->getReverseWordsString());
+        
+        $string->reverseString = 'При-вет! - ДавНо не ви-деЛись.';
+        $this->assertSame('Тев-ирп! - ОнвАд ен ьсилеД-ив.', $string->getReverseWordsString());
     }
 
     public function testFailGetReverseWordsString()
